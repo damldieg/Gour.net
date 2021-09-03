@@ -27,16 +27,21 @@ router.get('/types', async (req, res) => {
 
   const diets = await model.getDiets();
 
-  diets.length ? res.status(200).send(diets) : res.send( "No hay dietas")
+  diets.length ? res.status(200).send(diets) : res.send( "No hay dietas");
+});
 
+router.get('/recipes/:id', async (req, res) => {
 
+  const recipe = await model.getRecipeById(req.params.id);
+
+  res.json(recipe);
 });
 
 router.post('/recipe', async (req, res) => {
-  const {title, diet, image} = req.body;
-  let recipe = await model.createRecipe(title, image, diet);
+  const {title, diets, image, healthiness, score, instructions, resume} = req.body;
+  let recipe = await model.createRecipe(title, image, score, healthiness, resume, instructions, diets);
   res.send(recipe)
-})
+});
 
 
 
