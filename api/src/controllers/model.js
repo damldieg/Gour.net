@@ -7,8 +7,8 @@ const {API_KEY_1} = process.env;
 
 module.exports = {
 
-    getRecipesApi: async function(number) {
-        const response =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=${number}&apiKey=${API_KEY_1}&addRecipeInformation=true`);
+    getRecipesApi: async function() {
+        const response =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY_1}&addRecipeInformation=true`);
     
         const recipes = await response.data.results.map(r => {
             return {
@@ -52,7 +52,7 @@ module.exports = {
 
     getAllRecipes: async function () {
         const dbRecipes = await this.getRecipesDb();
-        const apiRecipes = await this.getRecipesApi(100);
+        const apiRecipes = await this.getRecipesApi();
 
         const allRecipes = dbRecipes.concat(apiRecipes);
         return allRecipes;
