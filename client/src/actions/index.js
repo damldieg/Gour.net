@@ -28,15 +28,6 @@ export function getRecipeDetail(id) {
 }
 
 
-export function createRecipe() {
-    return function(dispatch) {
-       axios.post(`http://localhost:3001/home/recipe`)
-        .then(data => {
-          dispatch({ type: "CREATE_RECIPE", payload: data });
-        });
-    };
-}
-
 
 export function getDiets() {
     return function(dispatch) {

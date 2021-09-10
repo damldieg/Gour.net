@@ -8,12 +8,6 @@ const initialState = {
 
 
 function rootReducer(state = initialState, action) {
-    if (action.type === "CREATE_RECIPE") {
-        return {
-          ...state,
-          recipesLoaded: state.recipesLoaded.concat(action.payload)
-        }
-    }
 
     if (action.type === "GET_QUERY_RECIPES") {
         return {

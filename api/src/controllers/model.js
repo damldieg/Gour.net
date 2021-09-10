@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const {Recipe, Diet} = require('../db')
+const {Recipe, Diet, Instructon} = require('../db')
 const {API_KEY_1} = process.env;
 
  
@@ -9,30 +9,33 @@ module.exports = {
 
     getRecipesApi: async function() {
         const response =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY_1}&addRecipeInformation=true`);
-    
+        
         const recipes = await response.data.results.map(r => {
-            return {
+                return  {
                 id: r.id,
                 title: r.title,
                 image: r.image,
                 dishTypes: r.dishTypes,
                 diets: r.diets,
-                resume: r.summary,
+                resume: r.summary.replace(/<[^>]*>?/g, ""),
                 score: r.spoonacularScore,
                 healthiness: r.healthScore,
-                instructions: r.instructions,
+                instructions: r.analyzedInstructions[0] != undefined ? r.analyzedInstructions[0].steps : null,
             }
+
+
         })
         return recipes;
     },
 
     getRecipesDb: async function () {
       let recipes =  await Recipe.findAll({
-            include:{
+            include :{
                 model: Diet,
                 attributes: ['name']
             }
         });
+
         const recipesOk = [];
 
         for(let i = 0; i < recipes.length; i++) {
@@ -42,9 +45,14 @@ module.exports = {
             image: recipes[i].dataValues.image,
             diets : recipes[i].dataValues.diets.map ( d => d.name),
             resume : recipes[i].dataValues.resume,
-            instructions: recipes[i].dataValues.instructions,
             score: recipes[i].dataValues.score,
             healthiness: recipes[i].dataValues.healthiness,
+            instructions: recipes[i].dataValues.instructions.map(s => {
+                return {
+                    number: parseInt(s[0]),
+                    step: s[1],
+                }
+            })
         })}
 
         return recipesOk;
@@ -89,9 +97,13 @@ module.exports = {
             score, 
             healthiness,
             resume, 
-            instructions,
-            diets
-        })
+            instructions, 
+                
+        });
+
+      
+        
+      
 
         let dietDb = await Diet.findAll({
             where : {name : diets}
@@ -102,7 +114,18 @@ module.exports = {
 
     getRecipeById: async function(id) {
 
-        if(id.length > 7){
+      /*  id.length === 6  && parseInt(id);
+
+        let recipes = await this.getAllRecipes();
+
+        
+        recipes = recipes.find( r => r.id === id);
+        
+        console.log(recipes)
+
+        return recipes;*/
+
+        if(id.length > 6){
             let recipeRq = await Recipe.findAll({
                 where : {id : id},
                 include :{
@@ -119,9 +142,14 @@ module.exports = {
             image: recipeRq[0].dataValues.image,
             diets : recipeRq[0].dataValues.diets.map ( d => d.name),
             resume : recipeRq[0].dataValues.resume,
-            instructions: recipeRq[0].dataValues.instructions,
             score: recipeRq[0].dataValues.score,
             healthiness: recipeRq[0].dataValues.healthiness,
+            instructions: recipeRq[0].dataValues.instructions.map(s => {
+                return {
+                    number: parseInt(s[0]),
+                    step: s[1],
+                }
+            })
             }
             
             return recipeDb
@@ -132,19 +160,22 @@ module.exports = {
             return err;
         });
 
-        recipeApi = {
+        
+        let recipeApiOk = {
             id: recipeApi.data.id,
             title: recipeApi.data.title,
             image: recipeApi.data.image,
             dishTypes: recipeApi.data.dishTypes,
             diets: recipeApi.data.diets,
-            resume: recipeApi.data.summary,
+            resume: recipeApi.data.summary.replace(/<[^>]*>?/g, ""),
             score: recipeApi.data.spoonacularScore,
             healthiness: recipeApi.data.healthScore,
-            instructions: recipeApi.data.instructions,
+            instructions: recipeApi.data.analyzedInstructions[0] != undefined && recipeApi.data.analyzedInstructions.length > 0 ? recipeApi.data.analyzedInstructions[0].steps : null,
         }
+        
 
-        return recipeApi;
+
+        return recipeApiOk;
     }
 
 }

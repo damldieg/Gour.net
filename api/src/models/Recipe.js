@@ -17,7 +17,6 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.TEXT,
       allowNull: false,
-      defaultValue: "Gour.net\api\src\images\photo-1504674900247-0877df9cc836.jfif"
     },
     score: {
       type: DataTypes.INTEGER
@@ -31,9 +30,8 @@ module.exports = (sequelize) => {
       defaultValue: "Resume"
     },
     instructions: {
-      type: DataTypes.TEXT,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false,
-      defaultValue: "Instructions"
     }
   
   });

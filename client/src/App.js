@@ -8,12 +8,14 @@ import NewRecipe from './components/NewRecipe/NewRecipe';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getRecipes } from './actions';
+import Navbar from './components/Navbar/Navbar';
 
 
 
 
 function App() {
   const dispatch = useDispatch();
+  
   
 
   useEffect(() => {
@@ -25,16 +27,17 @@ function App() {
       <Route path="/" exact>
           <Home/>
       </Route>
-      <Route path="/recipes" exact>
+      <Route path="/home" exact>
+          <Navbar/>
           <Recipes/>
       </Route>
-      <Route path="/recipes/:id" exact>
+      <Route path="/home/:id" exact>
          <RecipeDetail/>
       </Route>
-      <Route path="/home/types" exact >
+      <Route path="/types" exact >
           <Diets/>
       </Route>
-      <Route path="/home/createRecipe" exact>
+      <Route path="/createRecipe" exact>
           <NewRecipe/>
       </Route>
     </div>

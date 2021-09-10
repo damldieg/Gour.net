@@ -1,0 +1,78 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    padding: .5rem;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.pagination li.active   {
+    background-color: black;
+    color: white;
+}
+
+.pagination li button {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.pagination li:hover {
+    background-color: black;
+    color: white;
+}
+
+.pagination li:focus {
+   outline: none;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+
+.recipe {
+    width: 32%;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 0;
+    margin-top: 5rem;
+}
+
+.image {
+    width: 100vw;
+    height: 75vh;
+    background-image: url('../../images/frying-pan-empty-with-various-spices-in-black-table.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.image h1{
+    color: white;
+    text-align: initial;
+    padding-top: 14rem;
+    margin: 0;
+    margin-left: 2rem;
+
+}
+
+.puntos:hover {
+    color: white;
+}
