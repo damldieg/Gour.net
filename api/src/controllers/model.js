@@ -68,7 +68,7 @@ module.exports = {
 
 
     getDiets:  async function () {
-        let arrDiets = ['gluten Free', 'ketogenic', 'vegetarian', 'lacto-Vegetarian', 'ovo-Vegetarian', 'vegan', 'pescetarian', 'paleo','primal', 'whole30']
+        let arrDiets = ['gluten free','paleolithic', 'dairy free',  'lacto ovo vegetarian', 'vegetarian', 'vegan', 'pescatarian', 'paleo','primal', 'whole30', 'fodmap friendly']
         
         for(let i = 0; i < arrDiets.length; i++) {
             Diet.findOrCreate({
@@ -113,17 +113,6 @@ module.exports = {
     }, 
 
     getRecipeById: async function(id) {
-
-      /*  id.length === 6  && parseInt(id);
-
-        let recipes = await this.getAllRecipes();
-
-        
-        recipes = recipes.find( r => r.id === id);
-        
-        console.log(recipes)
-
-        return recipes;*/
 
         if(id.length > 6){
             let recipeRq = await Recipe.findAll({

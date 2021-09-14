@@ -1,0 +1,29 @@
+.container {
+    background: #e5b299e5;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    color: black;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: black;
+    padding: .3em;
+}
+
+.create {
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+}
+
+.about {
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+}

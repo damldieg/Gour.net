@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiets } from '../../actions/index';
 import { createRecipe } from '../../actions/services';
+import style from './NewRecipe.module.css';
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import {Link} from 'react-router-dom';
 
 
 
@@ -11,6 +14,8 @@ function NewRecipe() {
     const [formData, setFormData] = useState({title: '', score: '', healthiness: '', resume: '', instructions: [], diets: [], image: ''});
     const diets = useSelector((state) => state.diets);
     const dispatch = useDispatch();
+    const [message, setMessage] = useState('');
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         if(diets.length === 0) dispatch(getDiets());
@@ -41,6 +46,34 @@ function NewRecipe() {
             ...formData,
             [e.target.name]: e.target.value
         })
+    }
+
+    function handleBlur (e) {
+        handleOnChange(e);
+
+        let errors = {}
+
+        if(!formData.title.trim()){
+            errors.title = "El campo TITLE es requerido";
+        }
+
+        if(!formData.score.trim()){
+            errors.score = "El campo SCORE es requerido";
+        }
+
+        if(!formData.healthiness.trim()){
+            errors.healthiness = "El campo HEALTHINESS es requerido";
+        }
+
+        if(!formData.resume.trim()){
+            errors.resume = "El campo RESUME es requerido";
+        }
+        
+        if(!formData.image.trim()){
+            errors.image = "El campo IMAGE es requerido";
+        }
+
+        setErrors(errors);
     }
 
     function handleChangeCheckbox(e) {
@@ -75,31 +108,50 @@ function NewRecipe() {
         createRecipe(formData)
         .then( (res) => {
             setFormData({title: '', score: '', healthiness: '', resume: '', instructions: [], diets: [], image:''});
-        }).catch(err => console.error(err));
+        }).catch(err => console.log(err));
+
+        setMessage('RECIPE CREATED!!!');
+
       }
 
-    return (
-        <div>
+    function disabledButton (){
+        let bool = true;
+        if(formData.image.length > 0  && formData.title.length > 0  && formData.resume.length > 0  && formData.healthiness.length > 0  && formData.score.length > 0 ){
+            bool = false;
+        }
 
+        return bool;
+    } 
+
+    return (
+        <div className={style.container}>
+            { message?.length === 0 ?  (
+            <div className={style.containerT}>
             <h1>Create your own recipe</h1>
             <form onSubmit={handleSubmit}>
+                <div className={style.inputs}>
                 <label>Title: </label>
-                <input type="text"  placeholder="Title" name="title" value={formData.title} onChange={handleOnChange}/>
                 <br/>
+                <input type="text"  placeholder="Title" name="title" value={formData.title} onChange={handleOnChange} onBlur={handleBlur}/>
+                {errors.title && <p>{errors.title}</p>}
                 <br/>
                 <label>Score: </label>
-                <input type="number"  placeholder="Score"  name="score"  value={formData.score}onChange={handleOnChange}/>
                 <br/>
+                <input type="number"  placeholder="Score"  name="score"  value={formData.score}onChange={handleOnChange} onBlur={handleBlur}/>
+                {errors.score && <p>{errors.score}</p>}
                 <br/>
                 <label>Healthiness: </label>
-                <input type="number"  name="healthiness" placeholder="Healthiness" value={formData.healthiness} onChange={handleOnChange}/>
                 <br/>
+                <input type="number"  name="healthiness" placeholder="Healthiness" value={formData.healthiness} onChange={handleOnChange} onBlur={handleBlur}/>
+                {errors.healthiness && <p>{errors.healthiness}</p>}
                 <br/>
                 <label>Resume: </label>
-                <textarea type="text"  name="resume" placeholder="Resume" value={formData.resume} onChange={handleOnChange}/>
                 <br/>
+                <textarea type="text"  name="resume" placeholder="Resume" value={formData.resume} onChange={handleOnChange} onBlur={handleBlur}/>
+                {errors.resume && <p>{errors.resume}</p>}
                 <br/>
-                <label>Add instructions:  </label><button type="button" onClick={handleAddCount}>+</button> <button type="button" onClick={handleRemoveCount}>-</button>
+                <label>Add instructions:  </label><button type="button" onClick={handleAddCount}><AiOutlinePlus/></button> <button type="button" onClick={handleRemoveCount}><AiOutlineMinus/></button>
+                <br/>
                 <br/>
                 {
                     formData.instructions?.map( (i, index) => {
@@ -115,20 +167,22 @@ function NewRecipe() {
                 }
                 <br/>
                 <br/>
-                <label>Image url: </label>
-                <input type="text"  name="image" placeholder="Image" value={formData.image} onChange={handleOnChange}/>
-                <br/>
-                <br/>
-                <label>Image preview: </label>
-                <br/>
-                <img src={formData.image} alt={formData.title}/>
-                <br/>
-                <br/>
-                <label>Diets: </label>
+                </div>
+                <div className={style.image}>
+                    <label>Image url: </label>
+                    <input type="text"  name="image" placeholder="Image url..." value={formData.image} onChange={handleOnChange} onBlur={handleBlur}/>
+                    {errors.image && <p>{errors.image}</p>}
+                    <label>Image preview: </label>
+                    <img src={formData.image} alt={formData.title}/>
+                </div>
+                <div className={style.filterdiets}>Diets: 
                 {
-                  diets.data ? diets.data.map( d => {
+                  diets ? diets.map( d => {
                       return (
-                            <label key={d}>{d}  <input type="checkbox" name={d} onChange={handleChangeCheckbox}/></label>
+                        <label className={style.dietsTitle} key={d}>
+                        <input type="checkbox" id={d} name={d} className={style.checkbox} onChange={handleChangeCheckbox}/>
+                        <span className={style.dietsF}>{d}</span> 
+                        </label>
                         )
                    }) : (
                        <>
@@ -136,9 +190,19 @@ function NewRecipe() {
                        </>
                    )
                 }
-                <br/>
-                <button type="submit">Create</button>
+                </div>
+                <div className={style.submit}>
+                    <button type="submit" disabled={disabledButton()}>Create</button>
+                </div>
             </form>
+            </div>
+            ) : (
+                <>
+                    <h1>{message}</h1>
+                    <Link to="/home" className={style.back}>Back to home</Link>
+                </>
+                 )
+            }
         </div>
     )
 }

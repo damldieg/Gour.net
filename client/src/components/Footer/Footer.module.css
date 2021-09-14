@@ -1,0 +1,45 @@
+.footer {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    color: black;
+    text-align: center;
+    background-color: #e5b299e5;
+    margin: auto;
+
+}
+
+.about {
+    color: #000000;
+    font-size: 2em;
+    padding: 0.5rem;
+}
+
+
+
+.redes {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+.iconos + .iconos { 
+    margin-left: 3rem;
+}
+
+.iconos {
+    color: black;
+}
+
+.iconos:hover {
+    color:black;
+    font-size: 1.8rem;
+    text-decoration: none;
+}

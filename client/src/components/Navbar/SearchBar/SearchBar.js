@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import {getQueryRecipes} from '../../../actions/index'
+import {getQueryRecipes} from '../../../actions/index';
+import style from './SearchBar.module.css'
+import { ImSearch } from "react-icons/im";
 
 export const SearchBar = () => {
 
@@ -16,16 +18,16 @@ export const SearchBar = () => {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(getQueryRecipes(recipesQuery.value));
-        setRecipesQuery('');
+        setRecipesQuery(recipesQuery.value = ''); ;
     }
     
 
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-            <input placeholder="Buscar recetas..." type="text" onChange={handleOnChange}/>
-            <button>Buscar</button>
+            <form onSubmit={handleSubmit} className={style.form}>
+            <input placeholder="Search recipes..." type="text"  onChange={handleOnChange} className={style.input}/>
+            <button className={style.buscar}><ImSearch/></button>
             </form>
         </div>
     )

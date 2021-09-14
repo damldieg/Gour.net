@@ -1,18 +1,20 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import style from './Home.module.css'
 
 export const Home = () => {
 
   
 
     return (
-        <div>
-            <div>
-                <h1>GourNet</h1>
+        <div className={style.container} >
+            <div className={style.title}>
+                <h1 className={style.focus}>GourNet</h1>
             </div>
-            <div>
-                <Link to="/home"><button>Entry</button></Link>
+            <div className={style.containerButton}>
+                <Link to="/home" className={style.btn}>Become a Chef</Link>
             </div>
+
         </div>
     )
 }

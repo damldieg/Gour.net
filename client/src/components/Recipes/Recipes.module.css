@@ -2,28 +2,51 @@
     list-style: none;
     display: flex;
     justify-content: center;
+    width: 70%;
+    font-weight: bold;
+    text-align: center;
+    margin: auto
 }
 
 .pagination li {
-    padding: .5rem;
+    background-color: #FCDEC0;
+    padding: .5em;
     cursor: pointer;
-    border: 1px solid black;
+    border-bottom: 1px solid rgb(92, 92, 92);
+    border-radius: 9999px;
+    font-size: 1.2em;
+    margin: .5em;
 }
 
 .pagination li.active   {
-    background-color: black;
+    background-color: #7D5A50;
     color: white;
 }
 
-.pagination li button {
-    background-color: transparent;
+.pagination  button {
     border: none;
-    font-size: 1rem;
+    font-size: 1.3em;
     cursor: pointer;
+    background-color: #FCDEC0;
+    border-bottom: 1px solid rgb(58, 57, 57);
+    border-radius: 9999px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: .7em;
+}
+.pagination  button:hover {
+    background-color: #7D5A50;
+    border: none;
+    cursor: pointer;
+    color: white;
 }
 
 .pagination li:hover {
-    background-color: black;
+    background-color: #7D5A50;
     color: white;
 }
 
@@ -34,45 +57,256 @@
 .recipes {
     display: flex;
     flex-wrap: wrap;
-    margin: 3rem;
+    margin: 3em;
+    justify-content: space-evenly;
+    backdrop-filter: blur(4px);
 }
 
-.recipe {
-    width: 32%;
-}
 
 .contenedor {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+   
 }
 
 .filters {
-    height: 70vh;
+    width: 80%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: .5rem 0;
-    margin-top: 5rem;
+    flex-wrap: wrap;
+    padding: .5em 1em;
+    margin: auto;
+    margin-top: 2em;
+    background:white;
+    backdrop-filter: blur(5px);
+    position: relative;
+    top: -6em;
+    border: 3px solid #FCDEC0;
+    border-radius: 8px
 }
 
-.image {
-    width: 100vw;
-    height: 75vh;
-    background-image: url('../../images/frying-pan-empty-with-various-spices-in-black-table.jpg');
+
+.first {
+  background-color: #F6FAF7;
+}
+
+.image{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../images/davies-designs-studio-NhZUvE0NZTQ-unsplash.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .image h1{
-    color: white;
-    text-align: initial;
-    padding-top: 14rem;
+    color: black;
+    text-align: center;
+    padding-top: 8em;
     margin: 0;
-    margin-left: 2rem;
+    padding-left: 2.5em;
+    letter-spacing: 0.25em;
+    font-size:3.5em
 
 }
 
-.puntos:hover {
+
+.filterdiets {
+    
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px 20px;
+    grid-auto-flow: column;
+    grid-template-areas:
+          ". . . . ."
+          ". . . . .";
+    justify-content: center; 
+    align-content: center; 
+    justify-items: center; 
+    align-items: center;    
+}
+
+.dietsTitle{
+    color: black;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.dietsF {
+    background-color: #FCDEC0;
+    border: 1px solid black;
+    border-radius: 5px; 
+    padding: .2em;
+}
+
+.order {
+    width: 50%;
+    margin: auto;
+    position: relative;
+    right: -8em;
+}
+
+.search {
+    position: relative;
+    right: -10em
+}
+
+
+ :checked + span  {
+    background-color: #7D5A50;
     color: white;
 }
+
+.checkbox{
+   display: none;
+}
+.blurC {
+    width: 90%;
+    height: 90%;
+    background-color: #35343450;
+    backdrop-filter: blur(5px);
+    margin: auto;
+    border-radius: 8px;
+    border: 3px solid #FCDEC0;
+}
+
+.blurC:hover{
+    cursor: pointer;
+    display: none;
+}
+
+.dietsR {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: 2em;
+}
+
+.diet {
+    color: black;
+    background-color: #FCDEC0;
+    border: 1px solid #FCDEC0;
+    border-radius: 5px;
+    margin: .4em;
+    text-align: center;
+}
+
+
+.recipeTitle {
+    width: 100%;
+    margin: auto;
+    color: white;
+    font-size: 1.5em;
+    padding-top: .5em;
+}
+
+.score {
+    width: 50%;
+    margin: auto;
+    color: 	#FFD700;
+    padding: 1.2em;
+    font-size: 1.5em;
+    position: relative;
+    top: 1em;
+}
+
+.healthiness {
+    width: 50%;
+    margin: auto;
+    color: 	red;
+    padding: 1.2em;
+    font-size: 1.5em;
+    position: relative;
+    top: 1em;
+
+}
+
+.orderBy{
+    border-color: #FCDEC0 ;
+}
+
+.option {
+    border-color: #FCDEC0 ;
+    background-color:  #FCDEC0;
+    text-align: center;
+}
+
+.by {
+    font-size: 1em;
+    padding-right: 1em;
+
+}
+
+.paginationC {
+    width: 100%;
+    margin: auto;
+}
+
+
+    .fadeInUp {
+        -webkit-box-shadow: 1px 3px 48px -13px #000000; 
+        box-shadow: 1px 3px 48px -13px #000000;
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes fadeInUp {
+        0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        }
+        100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+        }
+        }
+        @keyframes fadeInUp {
+        0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        }
+        100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+        }
+        } 
+
+
+        .containerNF {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
+          .notFound {
+            color: #000000;
+            font-size: 2em;
+            animation-name: rotate-in-center;
+            animation-duration: 2.2s;
+            animation-timing-function: ease;
+            animation-delay: 0.6s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-fill-mode: forwards;
+          }
+          @keyframes rotate-in-center {
+            0%{
+              -webkit-transform: rotate(-360deg);
+              transform: rotate(-360deg);
+              opacity: 0;
+            }
+            100%{
+              -webkit-transform: rotate(0);
+              transform: rotate(0);
+              opacity: 1;
+            }
+          }

@@ -42,7 +42,7 @@ router.get('/recipes/:id', async (req, res) => {
 router.post('/recipe', async (req, res) => {
   const {title, diets, image, healthiness, score, instructions, resume} = req.body;
   let recipe = await model.createRecipe(title, image, score, healthiness, resume, instructions, diets);
-  res.send(recipe)
+  res.send("Recipe created!!!")
 });
 
 

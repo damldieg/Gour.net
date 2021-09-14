@@ -1,0 +1,141 @@
+.loader{
+	-webkit-perspective:700px;
+	perspective: 700px;
+    margin-top: 15em;
+}
+
+.loader>span{
+	font-size: 130px;
+	font-family: "franklin gothic medium",sans-serif;
+	display: inline-block;
+	animation:flip 2.6s infinite linear;
+	transform-origin:0 70%;
+	transform-style:preserve-3d;
+	-webkit-transform-style:preserve-3d;
+}
+
+@keyframes flip{
+	35%{
+		transform: rotateX(360deg);
+	}
+	100%{
+		transform: rotatex(360deg);
+	}
+}
+
+
+.loader>span:nth-child(even){
+	color:#7D5A50;
+
+}
+
+.loader>span:nth-child(2){
+	animation-delay: 0.3s;
+}
+
+.loader>span:nth-child(3){
+	animation-delay: 0.6s;
+}
+
+.loader>span:nth-child(4){
+	animation-delay: 0.9s;
+}
+
+.loader>span:nth-child(5){
+	animation-delay: 1.2s;
+}
+
+.loader>span:nth-child(6){
+	animation-delay: 1.5s
+}
+
+.loader>span:nth-child(7){
+	animation-delay: 1.8s
+}
+
+.container {
+    background-color: #F6FAF7;
+    position: relative;
+    padding: 2em;
+    
+}
+
+.containerT{
+    width: 95vw;
+    margin:  auto;
+    border: 3px solid #FCDEC0;
+    -webkit-box-shadow: 1px 3px 48px -13px #000000; 
+    box-shadow: 1px 3px 48px -13px #000000;
+    padding-top: 1em;
+    border-radius: 8px;
+    padding-bottom: 3em;
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.infoT {
+    width: 50%;
+}
+
+.image {
+    width: 48%;
+    border-radius: 50px;
+    border: 3px solid #FCDEC0;
+    margin: auto;
+}
+
+.resume {
+    text-align: center;
+    letter-spacing: 2px;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+}
+
+.diets {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+}
+
+.types {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+}
+
+.points {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.points {
+    width: 50%;
+    margin: auto;
+    color: 	#FFD700;
+    font-size: 1.5em;
+    padding: 1em;
+    position: relative;
+}
+
+.heart {
+    color: 	red;
+}
+
+.instructions {
+    width: 70%;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+   
+}
+
+.instructions li{
+    padding: 1em
+}

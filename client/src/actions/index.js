@@ -37,3 +37,15 @@ export function getDiets() {
         });
     };
 }
+
+export function orderRecipes(payload) {
+  return function(dispatch) {
+   dispatch({ type: "ORDER_RECIPES", payload});
+  };
+}
+
+export function filterRecipes(payload) {
+  return function(dispatch) {
+   dispatch({ type: "FILTER_RECIPES", payload});
+  };
+}
