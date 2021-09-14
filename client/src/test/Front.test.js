@@ -16,7 +16,7 @@ describe('reducer', () => {
         recipesFiltered: []})
     })
   
-    describe('<Nav />', () => {
+    describe('<NavBar />', () => {
         let wrapper
         beforeEach(() => {
           wrapper = shallow(<NavBar />)

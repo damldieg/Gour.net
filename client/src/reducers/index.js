@@ -82,7 +82,7 @@ function rootReducer(state = initialState, action) {
             }
             return 0;
           })
-          state.recipesOrder = orderRecipesHS.map(r => r);;
+          state.recipesOrder = orderRecipesHS.map(r => r);
           break;
         case 'Less healthiness':
           let orderRecipesLH = state.recipesLoaded?.sort(function (a, b) {

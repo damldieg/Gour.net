@@ -107,7 +107,6 @@ function Recipes() {
         padding-top: 1em;
         border: 4px solid #FCDEC0;
         color: white;
-
     `;
 
     

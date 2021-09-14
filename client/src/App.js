@@ -31,24 +31,40 @@ function App() {
       <Route path="/home" exact>
           <Navbar/>
           <Recipes/>
-      </Route>
-      <Route path="/home/:id" exact>
-          <Navbar/>
-         <RecipeDetail/>
-      </Route>
-      <Route path="/about" exact >
-          <Navbar/>
-          <About/>
-      </Route>
-      <Route path="/createRecipe" exact>
-          <Navbar/>
-          <NewRecipe/>
-      </Route>
-      <Footer 
+          <Footer 
       titulo="GourNet"
       instagram="https://www.instagram.com/"
       github="https://github.com/damldieg" 
       linkedin="https://www.linkedin.com/in/damianldiego/"/>
+      </Route>
+      <Route path="/home/:id" exact>
+          <Navbar/>
+         <RecipeDetail/>
+         <Footer 
+      titulo="GourNet"
+      instagram="https://www.instagram.com/"
+      github="https://github.com/damldieg" 
+      linkedin="https://www.linkedin.com/in/damianldiego/"/>
+      </Route>
+      <Route path="/about" exact >
+          <Navbar/>
+          <About/>
+          <Footer 
+      titulo="GourNet"
+      instagram="https://www.instagram.com/"
+      github="https://github.com/damldieg" 
+      linkedin="https://www.linkedin.com/in/damianldiego/"/>
+      </Route>
+      <Route path="/createRecipe" exact>
+          <Navbar/>
+          <NewRecipe/>
+          <Footer 
+      titulo="GourNet"
+      instagram="https://www.instagram.com/"
+      github="https://github.com/damldieg" 
+      linkedin="https://www.linkedin.com/in/damianldiego/"/>
+      </Route>
+      
     </div>
   );
 }
