@@ -32,10 +32,6 @@
     justify-content: space-around;
 }
 
-.image  input{
-    width: 50%;
-    margin: auto;
-}
 
 .image  img{
    border-radius: 8px;
@@ -101,6 +97,7 @@
     justify-items: center; 
     align-items: center;    
     margin: auto;
+    padding-top: 3em;
 }
 
 .submit button{
@@ -151,5 +148,6 @@
     background-color: #FCDEC0;
     padding: .4em;
     border-radius: 8px;
-    margin-top: 3em;
+    position: relative;
+    top: 3em;
 }

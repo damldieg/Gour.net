@@ -47,7 +47,7 @@ module.exports = {
             resume : recipes[i].dataValues.resume,
             score: recipes[i].dataValues.score,
             healthiness: recipes[i].dataValues.healthiness,
-            instructions: recipes[i].dataValues.instructions.map(s => {
+            instructions: recipes[i].dataValues.instructions?.map(s => {
                 return {
                     number: parseInt(s[0]),
                     step: s[1],
@@ -133,7 +133,7 @@ module.exports = {
             resume : recipeRq[0].dataValues.resume,
             score: recipeRq[0].dataValues.score,
             healthiness: recipeRq[0].dataValues.healthiness,
-            instructions: recipeRq[0].dataValues.instructions.map(s => {
+            instructions: recipeRq[0].dataValues.instructions?.map(s => {
                 return {
                     number: parseInt(s[0]),
                     step: s[1],
