@@ -19,7 +19,7 @@ function  RecipeDetail() {
                             <div className={style.diets}>
                                 <label>Diets:</label>
                                 {
-                                    recipe.diets.map( d => {
+                                    recipe.diets?.map( d => {
                                         return (
                                             <li key={d}>{d}</li>
                                         )

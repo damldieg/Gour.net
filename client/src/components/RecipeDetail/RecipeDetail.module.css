@@ -2,6 +2,7 @@
 	-webkit-perspective:700px;
 	perspective: 700px;
     margin-top: 15em;
+    height: 100vh;
 }
 
 .loader>span{

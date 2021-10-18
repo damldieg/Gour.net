@@ -23,7 +23,7 @@ export function getRecipeDetail(id) {
        axios.get(`http://localhost:3001/home/recipes/${id}`)
         .then(data => {
           dispatch({ type: "GET_RECIPE_DETAIL", payload: data });
-        });
+        }).catch(error => console.error(error));
     };
 }
 

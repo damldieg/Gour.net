@@ -59,10 +59,18 @@ function NewRecipe() {
 
         if(!formData.score.trim()){
             errors.score = "El campo SCORE es requerido";
+        }else if(parseInt(formData.score) <= 0){
+            errors.score = "El campo no puede ser menor o igual a 0"
+        }else if(parseInt(formData.score) > 100){
+            errors.score = "El campo no puede ser mayor a 100"
         }
 
         if(!formData.healthiness.trim()){
             errors.healthiness = "El campo HEALTHINESS es requerido";
+        }else if(parseInt(formData.healthiness) <= 0){
+            errors.healthiness = "El campo no puede ser menor o igual a 0"
+        }else if(parseInt(formData.healthiness) > 100){
+            errors.healthiness = "El campo no puede ser mayor a 100"
         }
 
         if(!formData.resume.trim()){
@@ -137,12 +145,12 @@ function NewRecipe() {
                 <br/>
                 <label>Score: </label>
                 <br/>
-                <input type="number"  placeholder="Score"  name="score"  value={formData.score}onChange={handleOnChange} onBlur={handleBlur}/>
+                <input type="number"  placeholder="Score"  name="score"   value={formData.score}onChange={handleOnChange} onBlur={handleBlur}/>
                 {errors.score && <p>{errors.score}</p>}
                 <br/>
                 <label>Healthiness: </label>
                 <br/>
-                <input type="number"  name="healthiness" placeholder="Healthiness" value={formData.healthiness} onChange={handleOnChange} onBlur={handleBlur}/>
+                <input type="number"  name="healthiness" placeholder="Healthiness"  value={formData.healthiness} onChange={handleOnChange} onBlur={handleBlur}/>
                 {errors.healthiness && <p>{errors.healthiness}</p>}
                 <br/>
                 <label>Resume: </label>
